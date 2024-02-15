@@ -1,6 +1,6 @@
 use std::sync::Arc;
 
-use datafusion::logical_expr::{JoinConstraint, JoinType, Like};
+use datafusion::logical_expr::{Distinct, JoinConstraint, JoinType, Like};
 use datafusion::sql::sqlparser::ast::{JoinOperator, OrderByExpr};
 use datafusion::{
     error::{DataFusionError, Result},
@@ -310,19 +310,17 @@ fn sort_to_sql(
             _ => Err(DataFusionError::Plan("Expecting Sort expr".to_string())),
         })
         .collect::<Result<Vec<_>>>()
-    }
+}
+
 fn distinct_to_sql(distinct: &Distinct) -> Result<Option<ast::Distinct>> {
     match distinct {
         Distinct::All(_) => Ok(Some(ast::Distinct::Distinct)),
-        Distinct::On(on) => {
-            on
-                .on_expr
+        Distinct::On(on) => Ok(Some(ast::Distinct::On(
+            on.on_expr
                 .iter()
                 .map(|e| expr_to_sql(e, on.input.schema(), 0))
-                .collect::<Result<Vec<_>>>()
-
-           
-        }
+                .collect::<Result<Vec<_>>>()?,
+        ))),
     }
 }
 
