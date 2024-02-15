@@ -132,8 +132,14 @@ fn select_to_sql(
         LogicalPlan::Aggregate(_agg) => {
             not_impl_err!("Unsupported operator: {plan:?}")
         }
-        LogicalPlan::Distinct(_distinct) => {
-            not_impl_err!("Unsupported operator: {plan:?}")
+        LogicalPlan::Distinct(distinct) => {
+            let dis = distinct_to_sql(distinct)?;
+            select.distinct(dis);
+
+            match distinct {
+                Distinct::All(p) => select_to_sql(p, query, select, relation),
+                Distinct::On(o) => select_to_sql(o.input.as_ref(), query, select, relation),
+            }
         }
         LogicalPlan::Join(join) => {
             match join.join_constraint {
@@ -304,6 +310,20 @@ fn sort_to_sql(
             _ => Err(DataFusionError::Plan("Expecting Sort expr".to_string())),
         })
         .collect::<Result<Vec<_>>>()
+    }
+fn distinct_to_sql(distinct: &Distinct) -> Result<Option<ast::Distinct>> {
+    match distinct {
+        Distinct::All(_) => Ok(Some(ast::Distinct::Distinct)),
+        Distinct::On(on) => {
+            on
+                .on_expr
+                .iter()
+                .map(|e| expr_to_sql(e, on.input.schema(), 0))
+                .collect::<Result<Vec<_>>>()
+
+           
+        }
+    }
 }
 
 fn op_to_sql(op: &Operator) -> Result<ast::BinaryOperator> {
@@ -529,6 +549,10 @@ mod tests {
         ctx.sql("CREATE EXTERNAL TABLE table_c (id integer, value string) STORED AS MOCKTABLE LOCATION 'mock://path';").await.unwrap();
 
         let tests: Vec<(&str, &str)> = vec![
+            (
+                "select distinct ta.id from table_a ta;",
+                r#"SELECT DISTINCT `ta`.`id` FROM `table_a` AS `ta`"#,
+            ),
             (
                 "select ta.id from table_a ta;",
                 r#"SELECT `ta`.`id` FROM `table_a` AS `ta`"#,
