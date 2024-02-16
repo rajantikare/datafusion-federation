@@ -58,7 +58,7 @@ jobs:
       - uses: arduino/setup-protoc@v3
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - run: cargo clippy --features ${{ matrix.feature }} -- -Dwarnings
+      - run: cargo clippy -- -Dwarnings
 
   # package:
   #   name: Package
