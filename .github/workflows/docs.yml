@@ -25,7 +25,7 @@ jobs:
       - uses: arduino/setup-protoc@v3
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - run: cargo rustdoc -- --cfg docsrs
+      - run: cargo rustdoc -p datafusion-federation -- --cfg docsrs
       - run: chmod -c -R +rX "target/doc"
       - run: echo "<meta http-equiv=refresh content=0;url=datafusion-federation>" > target/doc/index.html
       # - if: github.event_name == 'push' && github.ref == 'refs/heads/main'
