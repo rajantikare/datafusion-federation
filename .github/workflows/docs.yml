@@ -31,7 +31,7 @@ jobs:
       # - if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: target/doc/
+          path: target/doc/datafusion_federation
 
   deploy:
     name: Deploy
