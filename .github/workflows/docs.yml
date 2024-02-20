@@ -27,7 +27,8 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - run: cargo rustdoc -p datafusion-federation -- --cfg docsrs
       - run: chmod -c -R +rX "target/doc"
-      - run: echo "<meta http-equiv=refresh content=0;url=datafusion-federation>" > target/doc/index.html
+      - run: touch target/doc/index.html
+      - run: echo "<meta http-equiv=refresh content=0;url=datafusion_federation/index.html>" > target/doc/index.html
       # - if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       - uses: actions/upload-pages-artifact@v3
         with:
