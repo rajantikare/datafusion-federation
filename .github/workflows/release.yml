@@ -23,8 +23,8 @@ jobs:
       - run: cargo check
       - run: cargo changelog --execute datafusion-federation
       - run: |
-          git config user.name rajantikare
-          git config user.email rajan.tikare@twintag.com
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
       - env:
           GH_TOKEN: ${{ github.token }}
           CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
