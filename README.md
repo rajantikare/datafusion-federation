@@ -1,5 +1,8 @@
 ## DataFusion Federation
 
+[![crates.io](https://img.shields.io/crates/v/datafusion-federation.svg)](https://crates.io/crates/datafusion-federation)
+[![docs.rs](https://docs.rs/datafusion-federation/badge.svg)](https://docs.rs/datafusion-federation)
+
 The goal of this repo is to allow [DataFusion](https://github.com/apache/arrow-datafusion) to resolve queries across remote query engines while pushing down as much compute as possible down.
 
 Check out [the examples](./examples/) to get a feel for how it works.
