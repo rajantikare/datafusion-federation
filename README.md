@@ -17,3 +17,6 @@ Potential use-cases:
 #### Status
 
 The project is in alpha status. Contributions welcome; land a PR = commit access.
+
+- [Docs (release)](https://docs.rs/datafusion-federation)
+- [Docs (main)](https://datafusion-contrib.github.io/datafusion-federation/)
