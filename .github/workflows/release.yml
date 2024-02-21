@@ -22,7 +22,7 @@ jobs:
       - run: cargo install cargo-smart-release --debug --locked
       - uses: arduino/setup-protoc@v3
         with:
-          repo-token: ${{ secrets.TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - run: cargo check
       - run: cargo changelog --execute datafusion-federation
       - run: |
