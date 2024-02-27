@@ -35,6 +35,5 @@ jobs:
             --allow-fully-generated-changelogs \
             --execute \
             --no-changelog-preview \
-            --allow-dirty \
             --verbose \
             datafusion-federation
