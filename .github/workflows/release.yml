@@ -37,4 +37,4 @@ jobs:
             --no-changelog-preview \
             --allow-dirty \
             --verbose \
-            datafusion-federation
+            test
