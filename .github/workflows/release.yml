@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - changelog
     paths:
       - datafusion-federation/**
 
@@ -35,7 +34,7 @@ jobs:
           cargo smart-release \
             --update-crates-index \
             --allow-fully-generated-changelogs \
-            --dry-run-cargo-publish \
+            --execute \
             --no-changelog-preview \
             --allow-dirty \
             --verbose \
