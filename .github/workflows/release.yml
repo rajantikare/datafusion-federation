@@ -6,7 +6,7 @@ on:
       - main
       - changelog
     paths:
-     - /datafusion-federation/**
+      - /datafusion-federation/**
 
 jobs:
   release:
