@@ -25,7 +25,7 @@ impl AnalyzerRule for FederationAnalyzerRule {
         Ok(plan.clone())
     }
 
-    /// A human readable name for this optimizer rule.
+    /// A human readable name for this optimizer rule
     fn name(&self) -> &str {
         "federation_optimizer_rule"
     }
