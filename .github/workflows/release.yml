@@ -40,9 +40,7 @@ jobs:
           cargo smart-release \
             --update-crates-index \
             --allow-fully-generated-changelogs \
-            --execute \
-            --no-publish \
+            --dry-run-cargo-publish \
             --no-changelog-preview \
-            --allow-dirty \
             --verbose \
             datafusion-federation
