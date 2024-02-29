@@ -36,6 +36,7 @@ jobs:
             --update-crates-index \
             --allow-fully-generated-changelogs \
             --dry-run-cargo-publish \
+            --no-push \
             --no-changelog-preview \
             --allow-dirty \
             --verbose \
