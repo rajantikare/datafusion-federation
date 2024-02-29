@@ -16,6 +16,8 @@ datafusion.workspace = true
 
 [package.metadata.docs.rs]
 
+features = []
+
 # Whether to pass `--all-features` to Cargo (default: false)
 all-features = true
 
