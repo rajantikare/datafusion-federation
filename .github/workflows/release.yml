@@ -35,7 +35,7 @@ jobs:
           cargo smart-release \
             --update-crates-index \
             --allow-fully-generated-changelogs \
-            --execute \
+            --dry-run-cargo-publish \
             --no-changelog-preview \
             --allow-dirty \
             --verbose \
