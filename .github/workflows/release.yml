@@ -4,8 +4,9 @@ on:
   push:
     branches:
       - main
+      - AppIntegration
     paths:
-      - datafusion-federation/**
+      - datafusion-federation/src/**
 
 jobs:
   release:
@@ -24,18 +25,23 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - run: cargo check
       - run: cargo changelog --execute datafusion-federation
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.APPID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
       - run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git config user.name github-actions
+          git config user.email github-actions@github.com
       - env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
           CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
         run: |
           cargo smart-release \
             --update-crates-index \
             --allow-fully-generated-changelogs \
             --execute \
+            --no-publish \
             --no-changelog-preview \
-            --allow-dirty \
             --verbose \
             datafusion-federation
