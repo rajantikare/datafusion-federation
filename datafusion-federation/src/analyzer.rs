@@ -25,7 +25,7 @@ impl AnalyzerRule for FederationAnalyzerRule {
         Ok(plan.clone())
     }
 
-    /// A human readable name for this optimizer rule.
+    /// A human readable name for this optimizer rule
     fn name(&self) -> &str {
         "federation_optimizer_rule"
     }
@@ -150,7 +150,7 @@ fn wrap_projection(plan: LogicalPlan) -> Result<LogicalPlan> {
 }
 
 pub fn get_table_source(source: Arc<dyn TableSource>) -> Result<Arc<dyn FederatedTableSource>> {
-    // Unwrap TableSource.
+    // Unwrap TableSource
     let source = source_as_provider(&source)?;
 
     // Get FederatedTableProviderAdaptor
