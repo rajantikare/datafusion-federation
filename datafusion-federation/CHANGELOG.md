@@ -20,6 +20,7 @@
  - <csr-id-0f102a69838c11334daa34de85256a8eedc5a888/> changelog file commit
  - <csr-id-f209ea631765cfb1a6cf4eb2e02136de34639d03/> commit to trigger release
  - <csr-id-2fc5d36cf262e8ef495b70f4b21b5d306d5019f2/> fox for release
+ - <csr-id-3262d4ad7056927fd576dfe844af06fc6b2fbff1/> commit to trigger release
 
 ### Other
 
@@ -30,8 +31,8 @@
 
 <csr-read-only-do-not-edit/>
 
- - 6 commits contributed to the release.
- - 5 commits were understood as [conventional](https://www.conventionalcommits.org).
+ - 1 commit contributed to the release.
+ - 1 commit was understood as [conventional](https://www.conventionalcommits.org).
  - 0 issues like '(#ID)' were seen in commit messages
 
 ### Commit Details
@@ -41,11 +42,6 @@
 <details><summary>view details</summary>
 
  * **Uncategorized**
-    - Release datafusion-federation v0.1.5 ([`f1aaeea`](https://github.com/rajantikare/datafusion-federation/commit/f1aaeea3e63368749cf7d84bf8c506170b666054))
-    - Test commit ([`0895061`](https://github.com/rajantikare/datafusion-federation/commit/0895061684ec26bf94d5728bb28ad6f74d2c369c))
-    - Changelog file commit ([`0f102a6`](https://github.com/rajantikare/datafusion-federation/commit/0f102a69838c11334daa34de85256a8eedc5a888))
-    - Commit to trigger release ([`f209ea6`](https://github.com/rajantikare/datafusion-federation/commit/f209ea631765cfb1a6cf4eb2e02136de34639d03))
-    - Fox for release ([`2fc5d36`](https://github.com/rajantikare/datafusion-federation/commit/2fc5d36cf262e8ef495b70f4b21b5d306d5019f2))
-    - Chnages to allow dirty ([`7dd4adc`](https://github.com/rajantikare/datafusion-federation/commit/7dd4adcf98d7330de53559272a86d89e22adb0cc))
+    - Commit to trigger release ([`3262d4a`](https://github.com/rajantikare/datafusion-federation/commit/3262d4ad7056927fd576dfe844af06fc6b2fbff1))
 </details>
 
