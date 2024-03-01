@@ -43,6 +43,5 @@ jobs:
             --execute \
             --no-publish \
             --no-changelog-preview \
-            --allow-dirty \
             --verbose \
             datafusion-federation
