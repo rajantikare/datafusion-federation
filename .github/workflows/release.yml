@@ -6,7 +6,7 @@ on:
       - main
       - AppIntegration
     paths:
-      - datafusion-federation/src/**
+      - datafusion-federation/src/*
 
 jobs:
   release:
