@@ -22,7 +22,7 @@ pub struct FederatedPlanNode {
 
 impl FederatedPlanNode {
     pub fn new(plan: LogicalPlan, planner: Arc<dyn FederationPlanner>) -> Self {
-        Self { plan, planner }
+        Self { planner, plan }
     }
 
     pub fn plan(&self) -> &LogicalPlan {

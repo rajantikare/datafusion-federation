@@ -14,9 +14,15 @@ jobs:
     runs-on: ubuntu-latest
     concurrency: release
     steps:
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.APPID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token }}
           submodules: recursive
       - uses: dtolnay/rust-toolchain@stable
       - run: cargo install cargo-smart-release --debug --locked
@@ -25,19 +31,10 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - run: cargo check
       - run: cargo changelog --execute datafusion-federation
-      - uses: actions/create-github-app-token@v1
-        id: app-token
-        with:
-          app-id: ${{ vars.APPID }}
-          private-key: ${{ secrets.PRIVATE_KEY }}
+      
       - run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # pulls all history and tags for Lerna to detect which packages changed
-          token: ${{ steps.app-token.outputs.token }}
       - env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
           CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
