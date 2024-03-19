@@ -18,3 +18,9 @@ connectorx = { git = "https://github.com/sfu-db/connector-x.git", rev = "fa0fc7b
     "src_sqlite",
 ] }
 tonic = "0.10.2"
+
+[dependencies]
+async-std = "1.12.0"
+
+[features]
+postgres = ["connectorx/src_postgres"]
